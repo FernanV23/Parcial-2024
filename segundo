@@ -1,0 +1,66 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Calculadora Simple");
+
+        // Solicitar al usuario el primer número
+        Console.Write("Ingrese el primer número entero: ");
+        if (!int.TryParse(Console.ReadLine(), out int numero1))
+        {
+            Console.WriteLine("Entrada no válida. Debe ingresar un número entero.");
+            return;
+        }
+
+        // Solicitar al usuario el segundo número
+        Console.Write("Ingrese el segundo número entero: ");
+        if (!int.TryParse(Console.ReadLine(), out int numero2))
+        {
+            Console.WriteLine("Entrada no válida. Debe ingresar un número entero.");
+            return;
+        }
+
+        // Solicitar al usuario el operador
+        Console.Write("Ingrese el operador (+, -, *, /): ");
+        string operador = Console.ReadLine();
+
+        // Realizar la operación según el operador ingresado
+        int resultado = 0;
+        switch (operador)
+        {
+            case "+":
+                resultado = numero1 + numero2;
+                break;
+
+            case "-":
+                resultado = numero1 - numero2;
+                break;
+
+            case "*":
+                resultado = numero1 * numero2;
+                break;
+
+            case "/":
+                // Validar que el divisor no sea cero
+                if (numero2 != 0)
+                {
+                    resultado = numero1 / numero2;
+                }
+                else
+                {
+                    Console.WriteLine("Error: No se puede dividir por cero.");
+                    return;
+                }
+                break;
+
+            default:
+                Console.WriteLine("Operador no válido. Use un operador válido (+, -, *, /).");
+                return;
+        }
+
+        // Mostrar el resultado
+        Console.WriteLine($"Resultado: {numero1} {operador} {numero2} = {resultado}");
+    }
+}
